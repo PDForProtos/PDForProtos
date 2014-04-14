@@ -9,7 +9,8 @@ Add the path of this folder to Pd's Search Path. In *Preferences*, click '*New..
 
 To use any of the abstractions, add one to your patch as an object. The library contains:
 
-* monitor_dropbox - Watches a dropbox folder for new files, emitting their contents then deleting them on a 10 second cycle.
+* monitor_dropbox - Watches a dropbox folder for new files, emitting their contents then deleting them on a 10 second cycle. (Inputs, from left: Toggle on/off, offset path inside Dropbox, pattern to watch for)
+* random_filename - Generates a random filename based on the system clock. Will append ".txt" by default, though this can be changed. (Inputs, from left: Bang to generate, set filename extension)
 
 ### Tests
 
