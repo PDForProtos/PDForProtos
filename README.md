@@ -11,13 +11,15 @@ To use any of the abstractions, add one to your patch as an object. The library 
 
 * monitor_dropbox - Watches a dropbox folder for new files, emitting their contents then deleting them on a 10 second cycle. (Inputs, from left: Toggle on/off, offset path inside Dropbox, pattern to watch for)
 * random_filename - Generates a random filename based on the system clock. Will append ".txt" by default, though this can be changed. (Inputs, from left: Bang to generate, set filename extension)
+* update_dropbox - Writes a message to a named file in a dropbox folder. (Inputs, from left to right: Bang to write(s), offset path inside dropbox, filename to write, content to write)
 
 ### Tests
 
 
 History
 -------
-1.0.0	14/04/2014	Initial release. Added 'monitor-dropbox.pd'.
+1.0.0	14/04/2014	Initial release. Added 'monitor_dropbox.pd'.
+			17/04/2015 Added 'update_dropbox.pd'
 
 License
 -------
