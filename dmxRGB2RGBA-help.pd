@@ -1,0 +1,107 @@
+#N canvas 299 74 565 405 10;
+#X obj 56 32 vsl 15 50 0 1 0 0 empty empty empty 0 -9 0 10 -258113
+-262144 -1 4900 1;
+#X floatatom 56 90 5 0 0 0 - - -;
+#X obj 96 31 vsl 15 50 0 1 0 0 empty empty empty 0 -9 0 10 -4034 -262144
+-1 0 1;
+#X floatatom 96 89 5 0 0 0 - - -;
+#X obj 136 31 vsl 15 50 0 1 0 0 empty empty empty 0 -9 0 10 -4160 -262144
+-1 4900 1;
+#X floatatom 136 89 5 0 0 0 - - -;
+#X obj 175 32 vsl 15 50 0 1 0 0 empty empty empty 0 -9 0 10 -228856
+-99865 -1 4900 1;
+#X floatatom 175 90 5 0 0 0 - - -;
+#X text 196 26 Optional:;
+#X text 206 42 Brightness;
+#X floatatom 45 160 5 0 0 0 - - -;
+#X floatatom 97 160 5 0 0 0 - - -;
+#X floatatom 146 159 5 0 0 0 - - -;
+#X floatatom 201 160 5 0 0 0 - - -;
+#X obj 94 118 dmxRGB2RGBA;
+#X msg 457 273 ports;
+#X msg 457 297 devices;
+#X obj 45 237 dmxRGBA2DmxSimpleMsg;
+#X obj 227 362 comport 4 9600;
+#X obj 391 239 cnv 15 60 22 empty empty empty 20 12 0 14 -253938 -66577
+0;
+#N canvas 146 163 525 433 serin 0;
+#X obj 180 61 cnv 15 15 15 empty \$0-number-canvas 4 4 8 0 14 -233017
+-1 0;
+#X obj 200 225 s \$0-number-canvas;
+#X obj 60 61 hradio 15 1 1 8 empty empty empty 0 -6 0 8 -225271 -1
+-1 4;
+#X obj 60 13 inlet;
+#X msg 200 202 label \$1;
+#X obj 200 180 makefilename %d;
+#X obj 59 108 int;
+#X msg 59 206 open \$1;
+#X obj 59 377 outlet;
+#X msg 201 306 set \$1 \$2;
+#X obj 59 266 trigger bang anything;
+#X obj 201 286 list;
+#X obj 383 383 outlet;
+#X obj 384 22 netreceive 34567;
+#X obj 477 43 tgl 15 0 empty empty empty 0 -6 0 10 -262144 -1 -1 0
+1;
+#X obj 384 41 bng 15 250 50 0 empty empty empty 0 -6 0 10 -262144 -1
+-1;
+#X obj 187 24 delay 15000;
+#X text 345 379 close;
+#X text 209 4 for open/close automation in Makefile;
+#X obj 184 95 bang;
+#X obj 184 137 send ARDUINO_TEST_RESET;
+#X msg 184 116 set 0;
+#X connect 2 0 6 0;
+#X connect 2 0 19 0;
+#X connect 3 0 2 0;
+#X connect 4 0 1 0;
+#X connect 5 0 4 0;
+#X connect 6 0 5 0;
+#X connect 6 0 7 0;
+#X connect 7 0 10 0;
+#X connect 9 0 8 0;
+#X connect 10 0 8 0;
+#X connect 10 1 11 0;
+#X connect 11 0 9 0;
+#X connect 13 0 15 0;
+#X connect 13 1 14 0;
+#X connect 15 0 16 0;
+#X connect 15 0 12 0;
+#X connect 16 0 2 0;
+#X connect 19 0 21 0;
+#X connect 21 0 20 0;
+#X coords 0 -1 1 1 136 17 1 60 60;
+#X restore 397 218 pd serin;
+#X text 394 200 serial port #;
+#X msg 457 241 close;
+#X msg 397 241 open 4;
+#X text -1 -5 Requires [SerialToDmx] firmware on an Arduino.;
+#X text 383 163 ↓ set the serial port;
+#X text 393 177 first;
+#X text 174 117 ← generates RGBAm (0..1) on each output;
+#X text 170 238 ← Takes R \, G \, B \, Am on input.;
+#X text 186 251 Connect to comport at 9600 baud.;
+#X connect 0 0 1 0;
+#X connect 1 0 14 0;
+#X connect 2 0 3 0;
+#X connect 3 0 14 1;
+#X connect 4 0 5 0;
+#X connect 5 0 14 2;
+#X connect 6 0 7 0;
+#X connect 7 0 14 3;
+#X connect 10 0 17 0;
+#X connect 11 0 17 1;
+#X connect 12 0 17 2;
+#X connect 13 0 17 3;
+#X connect 14 0 10 0;
+#X connect 14 1 11 0;
+#X connect 14 2 12 0;
+#X connect 14 3 13 0;
+#X connect 15 0 18 0;
+#X connect 16 0 18 0;
+#X connect 17 0 18 0;
+#X connect 20 0 23 0;
+#X connect 20 1 22 0;
+#X connect 22 0 18 0;
+#X connect 23 0 18 0;
+#X coords 0 405 1 404 85 60 0;
